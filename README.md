@@ -197,14 +197,14 @@ Stores task details for each user.
 ---
 
 # 🌐 Deployment
-
+The frontend and backend were deployed separately using Render. However, due to some deployment and configuration issues, the live application could not be hosted successfully at this time.
 ## Frontend
 
-https://taskly-frontend-link.onrender.com
+[https://taskly-frontend-link.onrender.com](https://taskly-frontend-nydz.onrender.com)
 
 ## Backend
 
-https://taskly-backend-link.onrender.com
+[https://taskly-backend-link.onrender.com](https://taskly-backend-q6a4.onrender.com)
 
 ---
 
