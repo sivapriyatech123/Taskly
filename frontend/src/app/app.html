@@ -1,0 +1,28 @@
+<div class="app-container">
+  <header>
+    <h1>TASK TRACKER</h1>
+    <div class="stats">
+      <span class="pending">{{ pendingCount() }} Pending</span>
+      <span class="divider">|</span>
+      <span class="done">{{ doneCount() }} Done</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <app-task-form (taskAdded)="addTask($event)"></app-task-form>
+    </section>
+
+    <section class="filter-section">
+      <app-task-filter (filterChanged)="updateFilters($event)"></app-task-filter>
+    </section>
+
+    <section class="list-section">
+      <app-task-list 
+        [tasks]="filteredTasks()" 
+        (toggleDone)="toggleTask($event)"
+        (deleteTask)="deleteTask($event)"
+      ></app-task-list>
+    </section>
+  </main>
+</div>

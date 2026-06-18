@@ -1,0 +1,44 @@
+<div class="dashboard-layout">
+  
+
+    <div class="main-wrapper">
+        <header class="page-header">
+            <div class="welcome">
+                <h1>Welcome, {{ auth.currentUser()?.username }} 👋</h1>
+                <p>You have {{ pendingCount() }} pending tasks for today.</p>
+            </div>
+            <div class="quick-stats">
+                <div class="stat-pill pending">{{ pendingCount() }} Pending</div>
+                <div class="stat-pill done">{{ doneCount() }} Done</div>
+            </div>
+        </header>
+
+        <div class="loading-state" *ngIf="isLoading()">
+            <div class="spinner"></div>
+            <p>Loading your tasks...</p>
+        </div>
+
+        <div class="error-alert" *ngIf="error()">
+            {{ error() }}
+            <button (click)="loadTasks()" class="retry-btn">Retry</button>
+        </div>
+
+        <div class="content-grid" [class.dimmed]="isLoading()">
+            <!-- CENTER SECTION: Create Task -->
+            <section class="create-section">
+                <app-task-form (taskAdded)="addTask($event)"></app-task-form>
+            </section>
+
+            <!-- RIGHT SECTION: Task List -->
+            <section class="list-section">
+                <app-task-header (searchChanged)="handleSearch($event)"
+                    (filterChanged)="handleFilters($event)"></app-task-header>
+
+                <div class="tasks-container">
+                    <app-task-list [tasks]="filteredTasks()" (toggle)="toggleTask($event)"
+                        (delete)="deleteTask($event)"></app-task-list>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

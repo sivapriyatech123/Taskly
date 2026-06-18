@@ -1,0 +1,20 @@
+<div class="filter-card">
+    <div class="filter-group">
+        <label for="statusFilter">Status</label>
+        <select id="statusFilter" [(ngModel)]="status" (change)="onFilterChange()">
+            <option value="All">All</option>
+            <option value="Pending">Pending</option>
+            <option value="Done">Done</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <label for="priorityFilter">Priority</label>
+        <select id="priorityFilter" [(ngModel)]="priority" (change)="onFilterChange()">
+            <option value="All">All</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+    </div>
+</div>

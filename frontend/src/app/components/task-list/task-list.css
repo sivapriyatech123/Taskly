@@ -1,0 +1,228 @@
+.pinterest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px;
+    background: white;
+    border-radius: 24px;
+    color: #64748b;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.empty-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.task-card {
+    background: white;
+    border-radius: 24px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.task-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+}
+
+.task-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.task-card.completed {
+    opacity: 0.6;
+}
+
+.card-badges {
+    display: flex;
+    gap: 8px;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge {
+    background: rgba(0, 0, 0, 0.05);
+    color: #475569;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1e293b;
+    line-height: 1.4;
+}
+
+h3.line-through {
+    text-decoration: line-through;
+}
+
+.description {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.due-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.due-date {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.countdown-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    transition: all 0.2s ease;
+}
+
+/* Green for more than 5 days remaining */
+.countdown-safe {
+    background-color: #ecfdf5;
+    color: #047857;
+    border: 1px solid #a7f3d0;
+}
+
+/* Yellow for 2-5 days remaining */
+.countdown-soon {
+    background-color: #fffbeb;
+    color: #b45309;
+    border: 1px solid #fde68a;
+}
+
+/* Orange for 1 day remaining */
+.countdown-tomorrow {
+    background-color: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #ffedd5;
+}
+
+/* Red for due today */
+.countdown-today {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fee2e2;
+}
+
+/* Dark red for overdue tasks */
+.countdown-overdue {
+    background-color: #fff5f5;
+    color: #991b1b;
+    border: 1px solid #fee2e2;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    background: #f1f5f9;
+    color: #475569;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-icon.delete:hover {
+    background: #ef4444;
+}
+
+/* Priority Themes */
+.theme-high::before {
+    background: #ef4444;
+}
+
+.theme-high .priority-badge {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.theme-medium::before {
+    background: #f59e0b;
+}
+
+.theme-medium .priority-badge {
+    background: #fef3c7;
+    color: #f59e0b;
+}
+
+.theme-low::before {
+    background: #10b981;
+}
+
+.theme-low .priority-badge {
+    background: #d1fae5;
+    color: #10b981;
+}
+
+@media (max-width: 600px) {
+    .pinterest-grid {
+        grid-template-columns: 1fr;
+    }
+}

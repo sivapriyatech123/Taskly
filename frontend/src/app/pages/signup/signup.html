@@ -1,0 +1,40 @@
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Create Account</h1>
+            <p>Start managing your tasks with style</p>
+        </div>
+
+        <div class="error-alert" *ngIf="errorMessage">
+            {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" [(ngModel)]="username" placeholder="Choose a username"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Enter your email"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="••••••••"
+                    required>
+            </div>
+
+            <button type="submit" class="auth-btn" [disabled]="isLoading">
+                {{ isLoading ? 'Creating...' : 'Create Account' }}
+            </button>
+        </form>
+
+        <p class="auth-footer">
+            Already have an account? <a routerLink="/signin">Sign In</a>
+        </p>
+    </div>
+</div>

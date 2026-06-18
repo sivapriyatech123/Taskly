@@ -1,0 +1,39 @@
+<div class="pinterest-grid">
+    <div *ngIf="tasks.length === 0" class="empty-state">
+        <div class="empty-icon">📝</div>
+        <h3>No tasks yet</h3>
+        <p>Try adjusting your search or filters.</p>
+    </div>
+
+    <div *ngFor="let task of tasks" class="task-card" [class.completed]="task.is_done"
+        [ngClass]="getCardTheme(task.priority)">
+
+        <div class="card-badges">
+            <span class="badge priority-badge">{{ task.priority }} Priority</span>
+            <span class="badge status-badge">{{ task.is_done ? 'Done' : 'Pending' }}</span>
+        </div>
+
+        <h3 [class.line-through]="task.is_done">{{ task.title }}</h3>
+        <p *ngIf="task.description" class="description">{{ task.description }}</p>
+
+        <div class="card-footer">
+            <div class="due-info" *ngIf="task.due_date">
+                <div class="due-date">
+                    <span class="icon">📅</span> {{ task.due_date | date:'mediumDate' }}
+                </div>
+                <div class="countdown-badge" [ngClass]="getCountdownColorClass(task)">
+                    Time Remaining: {{ getCountdownText(task) }}
+                </div>
+            </div>
+
+            <div class="actions">
+                <button (click)="toggle.emit(task.id)" class="btn-icon" [title]="task.is_done ? 'Undo' : 'Mark Done'">
+                    {{ task.is_done ? '↺' : '✓' }}
+                </button>
+                <button (click)="delete.emit(task.id)" class="btn-icon delete" title="Delete Task">
+                    🗑
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
