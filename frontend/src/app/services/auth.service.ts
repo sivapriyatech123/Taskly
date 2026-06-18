@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthService {
     private http = inject(HttpClient);
-    private apiUrl = 'http://localhost:5000/api/auth';
+    private apiUrl = 'https://taskly-backend-q6a4.onrender.com/api/auth';
 
     currentUser = signal<{ username: string } | null>(null);
 
